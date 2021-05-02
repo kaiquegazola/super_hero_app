@@ -9,7 +9,8 @@ class HttpDio extends Http {
   final Dio _dio;
 
   @override
-  Future<HttpResponse> get(String url, {Map<String, dynamic>? body, Map<String, String>? headers}) async {
+  Future<HttpResponse> get(String url,
+      {Map<String, dynamic>? body, Map<String, String>? headers}) async {
     try {
       final response = await _dio.get<dynamic>(
         url,
@@ -31,7 +32,8 @@ class HttpDio extends Http {
   }
 
   @override
-  Future<HttpResponse> post(String url, Map<String, dynamic> body, {Map<String, String>? headers}) async {
+  Future<HttpResponse> post(String url, Map<String, dynamic> body,
+      {Map<String, String>? headers}) async {
     try {
       final response = await _dio.post<dynamic>(
         url,
@@ -49,7 +51,7 @@ class HttpDio extends Http {
         statusCode: response.statusCode,
       );
     } on DioError catch (_) {
-     rethrow;
+      rethrow;
     }
   }
 }

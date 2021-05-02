@@ -22,19 +22,18 @@ class HeroModel extends HeroEntity {
     ConnectionEntity? connections,
     String? image,
   }) : super(
-    id: id,
-    name: name,
-    slug: slug,
-    powerstats: powerstats,
-    appearance: appearance,
-    biography: biography,
-    work: work,
-    connections: connections,
-    image: image,
-  );
+          id: id,
+          name: name,
+          slug: slug,
+          powerstats: powerstats,
+          appearance: appearance,
+          biography: biography,
+          work: work,
+          connections: connections,
+          image: image,
+        );
 
-  factory HeroModel.fromJson(dynamic json) =>
-      HeroModel(
+  factory HeroModel.fromJson(dynamic json) => HeroModel(
         id: int.parse(json['id']),
         name: json['name'],
         slug: json['slug'],
@@ -62,19 +61,19 @@ class HeroModel extends HeroEntity {
       'name': name,
       'slug': slug,
       'powerstats':
-      powerstats != null ? (powerstats as PowerstatsModel).toJson() : null,
+          powerstats != null ? (powerstats as PowerstatsModel).toJson() : null,
       'appearance':
-      appearance != null ? (appearance as AppearanceModel).toJson() : null,
+          appearance != null ? (appearance as AppearanceModel).toJson() : null,
       'biography':
-      biography != null ? (biography as BiographyModel).toJson() : null,
+          biography != null ? (biography as BiographyModel).toJson() : null,
       'work': work != null ? (work as WorkModel).toJson() : null,
       'connections': connections != null
           ? (connections as ConnectionModel).toJson()
           : null,
       'image': image != null
           ? <String, dynamic>{
-        'url': image,
-      }
+              'url': image,
+            }
           : null,
     };
   }

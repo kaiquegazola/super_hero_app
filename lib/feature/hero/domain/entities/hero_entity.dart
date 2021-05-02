@@ -38,6 +38,6 @@ class HeroEntity extends Equatable {
         biography,
         work,
         connections,
-    image,
+        image,
       ];
 }

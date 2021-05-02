@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:super_hero_app/feature/hero/data/models/powerstats_model.dart';
 
-import 'abomb_hero_json.dart';
+import '../abomb_hero_json.dart';
 
 void main() {
   test('Should return a PowerstatsModel when a valid json is provide', () {
