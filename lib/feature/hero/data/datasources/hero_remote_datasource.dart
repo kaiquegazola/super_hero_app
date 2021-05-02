@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:super_hero_app/core/http/http_dio.dart';
 import 'package:super_hero_app/feature/hero/domain/datasources/hero_remote_datasource.dart';
 
-class HeroRemoteDataSourceImpl extends HeroRemoteDatasource {
-  HeroRemoteDataSourceImpl({
+class HeroRemoteDatasourceImpl extends HeroRemoteDatasource {
+  HeroRemoteDatasourceImpl({
     required this.http,
   });
 
