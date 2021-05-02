@@ -290,3 +290,5 @@ final Map<String, dynamic> heroSearchResultMap = <String, dynamic>{
     },
   ],
 };
+
+final listHeroSearchResultModel = HeroModel.fromListMap(heroSearchResultMap['results']);

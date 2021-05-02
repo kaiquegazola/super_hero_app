@@ -58,7 +58,7 @@ void main() {
       //act
       final result = await heroRepository.getHeroByName('iron');
       //assert
-      expect(result, isA<Left<Failure, HeroEntity>>());
+      expect(result, isA<Left<Failure, List<HeroEntity>>>());
       verify(() => heroRemoteDatasource.getHeroByName('iron'));
       verifyNoMoreInteractions(heroRemoteDatasource);
     });
@@ -73,7 +73,7 @@ void main() {
       //act
       final result = await heroRepository.getHeroByName('iron');
       //assert
-      expect(result, isA<Left<Failure, HeroEntity>>());
+      expect(result, isA<Left<Failure, List<HeroEntity>>>());
       verify(() => heroRemoteDatasource.getHeroByName('iron'));
       verifyNoMoreInteractions(heroRemoteDatasource);
     });

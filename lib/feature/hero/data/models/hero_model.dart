@@ -55,6 +55,12 @@ class HeroModel extends HeroEntity {
             : null,
       );
 
+  static List<HeroModel> fromListMap(List<Map<String, dynamic>> items) {
+    return items
+        .map<HeroModel>((Map<String, dynamic> e) => HeroModel.fromJson(e))
+        .toList();
+  }
+
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id.toString(),

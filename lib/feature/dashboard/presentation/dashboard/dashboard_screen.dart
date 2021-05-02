@@ -62,11 +62,12 @@ class DashboardScreen extends StatelessWidget {
                         onPressed: () {},
                         child: Text('SHUFFLE'),
                         style: OutlinedButton.styleFrom(
-                            primary: Colors.white,
-                            side: BorderSide(
-                              width: 2.w,
-                              color: Colors.white,
-                            )),
+                          primary: Colors.white,
+                          side: BorderSide(
+                            width: 2.w,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),

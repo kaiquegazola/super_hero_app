@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:super_hero_app/core/usecases/usecase.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
 
 part 'dashboard_controller.g.dart';
@@ -6,24 +7,15 @@ part 'dashboard_controller.g.dart';
 class DashboardController = DashboardControllerBase with _$DashboardController;
 
 abstract class DashboardControllerBase with Store {
-  DashboardControllerBase() {
-    Future<void>.delayed(
-      Duration(
-        seconds: 4,
-      ),
-    ).then((_) {
-      heroes = ObservableList.of([
-        HeroEntity(
-          name: 'test',
-          image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg'
-        ),
-        HeroEntity(
-          name: 'test2',
-          image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/8-adam-strange.jpg',
-        ),
-      ]);
-    });
+  DashboardControllerBase({
+    required this.getHeroById,
+    required this.getHeroByName,
+  }) {
+    initDashboard();
   }
+
+  final UseCase<HeroEntity, int> getHeroById;
+  final UseCase<List<HeroEntity>, String> getHeroByName;
 
   @computed
   HeroEntity? get currentHero => heroes?[currentIndex];
@@ -33,4 +25,19 @@ abstract class DashboardControllerBase with Store {
 
   @observable
   int currentIndex = 0;
+
+  @action
+  Future<void> initDashboard() async {
+    final List<HeroEntity> _heroes = [];
+    for (int i = 1; i < 6; i++) {
+      final heroResult = await getHeroById(i);
+      heroResult.fold(
+        (l) => null,
+        (hero) => _heroes.add(hero),
+      );
+    }
+    if (_heroes.isNotEmpty) {
+      heroes = ObservableList.of(_heroes);
+    }
+  }
 }

@@ -26,11 +26,11 @@ class HeroRepositoryImpl implements HeroRepository {
   }
 
   @override
-  Future<Either<Failure, HeroEntity>> getHeroByName(String name) async {
+  Future<Either<Failure, List<HeroEntity>>> getHeroByName(String name) async {
     try {
       final json = await remoteDatasource.getHeroByName(name);
-      final hero = HeroModel.fromJson(json);
-      return Right(hero);
+      final heroes = HeroModel.fromListMap(json!);
+      return Right(heroes);
     } catch (_) {
       return Left(
         Failure(message: 'Hero $name not found!'),
