@@ -18,7 +18,7 @@ class SliderHeroItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
           child: Stack(
             children: <Widget>[
-              Image.network(hero.images!.lg!, fit: BoxFit.cover, width: 1000.0),
+              Image.network(hero.image!, fit: BoxFit.cover, width: 1000.0),
               Positioned(
                 bottom: 0.0,
                 left: 0.0,

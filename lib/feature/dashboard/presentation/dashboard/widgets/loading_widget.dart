@@ -41,7 +41,7 @@ class _LoadingWidgetState extends State<LoadingWidget>
                 width: MediaQuery.of(context).size.width,
                 duration: Duration(seconds: 0),
                 child: Image(
-                  image: AssetImage('assets/loading2.jpg'),
+                  image: AssetImage('assets/loading.jpg'),
                   fit: BoxFit.fitWidth,
                   color: Colors.black.withOpacity(0.6),
                   colorBlendMode: BlendMode.darken,
