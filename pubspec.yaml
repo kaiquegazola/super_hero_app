@@ -15,10 +15,12 @@ dependencies:
   dartz: ^0.10.0-nullsafety.1
   dio: ^4.0.0
   dio_cache_interceptor: ^2.2.0
+  equatable: ^2.0.0
   flutter:
     sdk: flutter
   flutter_modular: ^3.1.1+1
   flutter_screenutil: ^5.0.0
+  mocktail: ^0.1.2
 
 dev_dependencies:
   flutter_test:
