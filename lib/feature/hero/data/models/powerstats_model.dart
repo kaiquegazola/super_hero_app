@@ -19,12 +19,12 @@ class PowerstatsModel extends PowerstatsEntity {
 
   factory PowerstatsModel.fromJson(dynamic json) {
     return PowerstatsModel(
-      intelligence: int.parse(json['intelligence']),
-      strength: int.parse(json['strength']),
-      speed: int.parse(json['speed']),
-      durability: int.parse(json['durability']),
-      power: int.parse(json['power']),
-      combat: int.parse(json['combat']),
+      intelligence: int.tryParse(json['intelligence']),
+      strength: int.tryParse(json['strength']),
+      speed: int.tryParse(json['speed']),
+      durability: int.tryParse(json['durability']),
+      power: int.tryParse(json['power']),
+      combat: int.tryParse(json['combat']),
     );
   }
 
