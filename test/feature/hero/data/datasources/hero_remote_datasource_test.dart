@@ -13,7 +13,7 @@ void main() {
   late HttpDio httpMock;
   late HeroRemoteDatasource heroRemoteDataSource;
 
-  setUp((){
+  setUp(() {
     httpMock = MockHttpDio();
     heroRemoteDataSource = HeroRemoteDatasourceImpl(
       http: httpMock,
@@ -23,11 +23,11 @@ void main() {
   group('get hero by id', () {
     test('Should return Map when valid response has get', () async {
       when(
-            () => httpMock.get(
+        () => httpMock.get(
           any(),
         ),
       ).thenAnswer(
-            (_) async => HttpResponse(
+        (_) async => HttpResponse(
           statusCode: 200,
           body: aBombFullMap,
         ),
@@ -39,11 +39,11 @@ void main() {
 
     test('Should return Null when invalid response has get', () async {
       when(
-            () => httpMock.get(
+        () => httpMock.get(
           any(),
         ),
       ).thenAnswer(
-            (_) async => HttpResponse(
+        (_) async => HttpResponse(
           statusCode: 400,
           body: null,
         ),
@@ -73,11 +73,11 @@ void main() {
 
     test('Should return Null when invalid response has get', () async {
       when(
-            () => httpMock.get(
+        () => httpMock.get(
           any(),
         ),
       ).thenAnswer(
-            (_) async => HttpResponse(
+        (_) async => HttpResponse(
           statusCode: 400,
           body: null,
         ),

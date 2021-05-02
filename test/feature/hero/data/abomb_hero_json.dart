@@ -133,18 +133,18 @@ final Map<String, dynamic> heroSearchResultMap = <String, dynamic>{
       },
       'work': {
         'occupation':
-        'Adventurer; formerly co-owner of Rand-Meachum, Inc., bodyguard, private investigator, research assistant, warrior',
+            'Adventurer; formerly co-owner of Rand-Meachum, Inc., bodyguard, private investigator, research assistant, warrior',
         'base': 'New York'
       },
       'connections': <String, dynamic>{
         'group-affiliation':
-        'New Avengers, Heroes for Hire, Inc., Secret Defenders, Defenders, Misty Knight, Luke Cage',
+            'New Avengers, Heroes for Hire, Inc., Secret Defenders, Defenders, Misty Knight, Luke Cage',
         'relatives':
-        'Wendell Rand-K\'ai (father, deceased), Heather Duncan Rand (mother, deceased), Yu-Ti (adopted uncle), Miranda Rand-K\'ai (half-sister), Lord Tuan (adopted paternal grandfather, deceased), Lady Ming (adopted paternal grandmother, deceased), Thomas Duncan (maternal grandfather)'
+            'Wendell Rand-K\'ai (father, deceased), Heather Duncan Rand (mother, deceased), Yu-Ti (adopted uncle), Miranda Rand-K\'ai (half-sister), Lord Tuan (adopted paternal grandfather, deceased), Lady Ming (adopted paternal grandmother, deceased), Thomas Duncan (maternal grandfather)'
       },
       'image': {
         'url':
-        'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/1120.jpg'
+            'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/1120.jpg'
       }
     },
     {
@@ -184,18 +184,18 @@ final Map<String, dynamic> heroSearchResultMap = <String, dynamic>{
       },
       'work': {
         'occupation':
-        'Inventor, Industrialist; former United States Secretary of Defense',
+            'Inventor, Industrialist; former United States Secretary of Defense',
         'base': 'Seattle, Washington'
       },
       'connections': {
         'group-affiliation':
-        'Avengers, Illuminati, Stark Resilient; formerly S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States Department of Defense.',
+            'Avengers, Illuminati, Stark Resilient; formerly S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States Department of Defense.',
         'relatives':
-        'Howard Anthony Stark (father, deceased), Maria Stark (mother, deceased), Morgan Stark (cousin), Isaac Stark (ancestor)'
+            'Howard Anthony Stark (father, deceased), Maria Stark (mother, deceased), Morgan Stark (cousin), Isaac Stark (ancestor)'
       },
       'image': {
         'url':
-        'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg'
+            'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg'
       }
     },
     {
@@ -230,11 +230,11 @@ final Map<String, dynamic> heroSearchResultMap = <String, dynamic>{
       'connections': {
         'group-affiliation': 'Stane International',
         'relatives':
-        'Zebediah (father, deceased), unnamed mother (deceased), Ezekiel Stane (son)'
+            'Zebediah (father, deceased), unnamed mother (deceased), Ezekiel Stane (son)'
       },
       'image': {
         'url':
-        'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/886.jpg'
+            'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/886.jpg'
       }
     },
     {
@@ -274,20 +274,19 @@ final Map<String, dynamic> heroSearchResultMap = <String, dynamic>{
       },
       'work': {
         'occupation':
-        'Inventor, Industrialist; former United States Secretary of Defense',
+            'Inventor, Industrialist; former United States Secretary of Defense',
         'base': 'Seattle, Washington'
       },
       'connections': {
         'group-affiliation':
-        'Avengers, Illuminati, Stark Resilient; formerly S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States Department of Defense.',
+            'Avengers, Illuminati, Stark Resilient; formerly S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States Department of Defense.',
         'relatives':
-        'Howard Anthony Stark (father, deceased), Maria Stark (mother, deceased), Morgan Stark (cousin), Isaac Stark (ancestor)'
+            'Howard Anthony Stark (father, deceased), Maria Stark (mother, deceased), Morgan Stark (cousin), Isaac Stark (ancestor)'
       },
       'image': {
         'url':
-        'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg'
+            'https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg'
       },
     },
   ],
 };
-
