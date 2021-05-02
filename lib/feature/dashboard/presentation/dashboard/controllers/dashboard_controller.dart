@@ -1,6 +1,5 @@
 import 'package:mobx/mobx.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
-import 'package:super_hero_app/feature/hero/domain/entities/images_entity.dart';
 
 part 'dashboard_controller.g.dart';
 
@@ -16,15 +15,11 @@ abstract class DashboardControllerBase with Store {
       heroes = ObservableList.of([
         HeroEntity(
           name: 'test',
-          images: ImagesEntity(
-            lg: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg',
-          ),
+          image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg'
         ),
         HeroEntity(
           name: 'test2',
-          images: ImagesEntity(
-            lg: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/8-adam-strange.jpg',
-          ),
+          image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/8-adam-strange.jpg',
         ),
       ]);
     });
