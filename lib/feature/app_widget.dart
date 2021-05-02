@@ -26,6 +26,7 @@ class AppWidget extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
           debugShowCheckedModeBanner: false,
+          initialRoute: '/dashboard',
         ).modular();
       },
     );
