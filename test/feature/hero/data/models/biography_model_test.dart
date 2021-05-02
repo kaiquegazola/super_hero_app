@@ -5,8 +5,7 @@ import 'abomb_hero_json.dart';
 
 void main() {
   test('Should return a BiographyModel when a valid json is provide', () {
-    final biographyModel =
-        BiographyModel.fromJson(aBombFullMap['biography']);
+    final biographyModel = BiographyModel.fromJson(aBombFullMap['biography']);
     expect(biographyModel, isA<BiographyModel>());
     expect(biographyModel, aBombFullModel.biography);
   });

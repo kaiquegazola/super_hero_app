@@ -52,7 +52,7 @@ class _LoadingWidgetState extends State<LoadingWidget>
           Align(
             alignment: Alignment.center,
             child: FadingTextWidget(
-              'Loading',
+              text: 'Loading',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 22.sp,

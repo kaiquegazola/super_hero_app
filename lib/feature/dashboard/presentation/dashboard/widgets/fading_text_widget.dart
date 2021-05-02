@@ -1,25 +1,20 @@
-
-
 import 'package:flutter/material.dart';
 
 class FadingTextWidget extends StatefulWidget {
-  /// Text to animate
+  const FadingTextWidget({
+    required this.text,
+    this.style,
+  });
+
   final String text;
-
-  /// Custom text style. If not specified, uses the default style.
   final TextStyle? style;
-
-  /// Creates a fading continuous animation.
-  ///
-  /// The provided [text] is continuously animated using [FadeTransition].
-  /// [text] must not be null.
-  FadingTextWidget(this.text, {this.style}) : assert(text != null);
 
   @override
   _FadingTextState createState() => _FadingTextState();
 }
 
-class _FadingTextState extends State<FadingTextWidget> with TickerProviderStateMixin {
+class _FadingTextState extends State<FadingTextWidget>
+    with TickerProviderStateMixin {
   final _characters = <MapEntry<String, Animation>>[];
   late AnimationController _controller;
 
@@ -61,13 +56,13 @@ class _FadingTextState extends State<FadingTextWidget> with TickerProviderStateM
       children: _characters
           .map(
             (entry) => FadeTransition(
-          opacity: entry.value as Animation<double>,
-          child: Text(
-            entry.key,
-            style: widget.style,
-          ),
-        ),
-      )
+              opacity: entry.value as Animation<double>,
+              child: Text(
+                entry.key,
+                style: widget.style,
+              ),
+            ),
+          )
           .toList(),
     );
   }
