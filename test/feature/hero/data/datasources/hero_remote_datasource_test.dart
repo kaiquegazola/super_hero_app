@@ -5,7 +5,7 @@ import 'package:super_hero_app/core/http/http_dio.dart';
 import 'package:super_hero_app/feature/hero/data/datasources/hero_remote_datasource.dart';
 import 'package:super_hero_app/feature/hero/domain/datasources/hero_remote_datasource.dart';
 
-import '../abomb_hero_json.dart';
+import '../heros_json.dart';
 
 class MockHttpDio extends Mock implements HttpDio {}
 

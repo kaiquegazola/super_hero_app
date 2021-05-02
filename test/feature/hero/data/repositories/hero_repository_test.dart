@@ -7,7 +7,7 @@ import 'package:super_hero_app/feature/hero/domain/datasources/hero_remote_datas
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/repositories/hero_repository.dart';
 
-import '../abomb_hero_json.dart';
+import '../heros_json.dart';
 
 class MockHeroRemoteDatasource extends Mock implements HeroRemoteDatasource {}
 
