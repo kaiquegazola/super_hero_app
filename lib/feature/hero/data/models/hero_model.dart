@@ -10,8 +10,6 @@ import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/powerstats_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/work_entity.dart';
 
-import 'images_model.dart';
-
 class HeroModel extends HeroEntity {
   const HeroModel({
     int? id,
@@ -22,23 +20,27 @@ class HeroModel extends HeroEntity {
     BiographyEntity? biography,
     WorkEntity? work,
     ConnectionEntity? connections,
-    ImagesModel? images,
+    String? image,
   }) : super(
-          id: id,
-          name: name,
-          slug: slug,
-          powerstats: powerstats,
-          appearance: appearance,
-          biography: biography,
-          work: work,
-          connections: connections,
-          images: images,
-        );
+    id: id,
+    name: name,
+    slug: slug,
+    powerstats: powerstats,
+    appearance: appearance,
+    biography: biography,
+    work: work,
+    connections: connections,
+    image: image,
+  );
 
-  factory HeroModel.fromJson(dynamic json) => HeroModel(
-        id: json['id'],
+  factory HeroModel.fromJson(dynamic json) =>
+      HeroModel(
+        id: int.parse(json['id']),
         name: json['name'],
         slug: json['slug'],
+        image: json['image'] != null && json['image']['url'] != null
+            ? json['image']['url']
+            : null,
         powerstats: json['powerstats'] != null
             ? PowerstatsModel.fromJson(json['powerstats'])
             : null,
@@ -52,27 +54,28 @@ class HeroModel extends HeroEntity {
         connections: json['connections'] != null
             ? ConnectionModel.fromJson(json['connections'])
             : null,
-        images: json['images'] != null
-            ? ImagesModel.fromJson(json['images'])
-            : null,
       );
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'id': id,
+      'id': id.toString(),
       'name': name,
       'slug': slug,
       'powerstats':
-          powerstats != null ? (powerstats as PowerstatsModel).toJson() : null,
+      powerstats != null ? (powerstats as PowerstatsModel).toJson() : null,
       'appearance':
-          appearance != null ? (appearance as AppearanceModel).toJson() : null,
+      appearance != null ? (appearance as AppearanceModel).toJson() : null,
       'biography':
-          biography != null ? (biography as BiographyModel).toJson() : null,
+      biography != null ? (biography as BiographyModel).toJson() : null,
       'work': work != null ? (work as WorkModel).toJson() : null,
       'connections': connections != null
           ? (connections as ConnectionModel).toJson()
           : null,
-      'images': images != null ? (images as ImagesModel).toJson() : null,
+      'image': image != null
+          ? <String, dynamic>{
+        'url': image,
+      }
+          : null,
     };
   }
 }

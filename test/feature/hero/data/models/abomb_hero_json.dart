@@ -2,21 +2,20 @@ import 'package:super_hero_app/feature/hero/data/models/appearance_model.dart';
 import 'package:super_hero_app/feature/hero/data/models/biography_model.dart';
 import 'package:super_hero_app/feature/hero/data/models/connection_model.dart';
 import 'package:super_hero_app/feature/hero/data/models/hero_model.dart';
-import 'package:super_hero_app/feature/hero/data/models/images_model.dart';
 import 'package:super_hero_app/feature/hero/data/models/powerstats_model.dart';
 import 'package:super_hero_app/feature/hero/data/models/work_model.dart';
 
 Map<String, dynamic> aBombFullMap = <String, dynamic>{
-  'id': 1,
+  'id': '1',
   'name': 'A-Bomb',
   'slug': '1-a-bomb',
   'powerstats': {
-    'intelligence': 38,
-    'strength': 100,
-    'speed': 17,
-    'durability': 80,
-    'power': 24,
-    'combat': 64
+    'intelligence': '38',
+    'strength': '100',
+    'speed': '17',
+    'durability': '80',
+    'power': '24',
+    'combat': '64'
   },
   'appearance': {
     'gender': 'Male',
@@ -45,15 +44,9 @@ Map<String, dynamic> aBombFullMap = <String, dynamic>{
     'relatives':
         'Marlo Chandler-Jones (wife); Polly (aunt); Mrs. Chandler (mother-in-law); Keith Chandler, Ray Chandler, three unidentified others (brothers-in-law); unidentified father (deceased); Jackie Shorr (alleged mother; unconfirmed)'
   },
-  'images': {
-    'xs':
-        'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg',
-    'sm':
-        'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg',
-    'md':
-        'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/1-a-bomb.jpg',
-    'lg':
-        'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg'
+  'image': {
+    'url':
+        'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg'
   }
 };
 
@@ -96,10 +89,6 @@ HeroModel aBombFullModel = HeroModel(
     relatives:
         'Marlo Chandler-Jones (wife); Polly (aunt); Mrs. Chandler (mother-in-law); Keith Chandler, Ray Chandler, three unidentified others (brothers-in-law); unidentified father (deceased); Jackie Shorr (alleged mother; unconfirmed)',
   ),
-  images: ImagesModel(
-    xs: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg',
-    sm: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/1-a-bomb.jpg',
-    md: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/1-a-bomb.jpg',
-    lg: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/lg/1-a-bomb.jpg',
-  ),
+  image:
+      'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/xs/1-a-bomb.jpg',
 );
