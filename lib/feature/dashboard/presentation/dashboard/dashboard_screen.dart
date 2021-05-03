@@ -20,6 +20,7 @@ class DashboardScreen extends StatelessWidget {
         builder: (_) => controller.heroes != null
             ? Container(
                 decoration: BoxDecoration(
+                  color: Colors.black,
                   image: DecorationImage(
                     image: NetworkImage(controller.currentHero!.image!),
                     fit: BoxFit.fitHeight,

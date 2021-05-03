@@ -1,6 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:super_hero_app/core/usecases/usecase.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 part 'dashboard_controller.g.dart';
 
@@ -37,7 +38,14 @@ abstract class DashboardControllerBase with Store {
       );
     }
     if (_heroes.isNotEmpty) {
+      preCacheImages(_heroes);
       heroes = ObservableList.of(_heroes);
+    }
+  }
+
+  Future<void> preCacheImages(List<HeroEntity> heroes) async {
+    for (var hero in heroes) {
+      await DefaultCacheManager().getSingleFile(hero.image!);
     }
   }
 }

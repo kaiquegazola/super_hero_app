@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
 
@@ -18,7 +19,11 @@ class SliderHeroItemWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5.0)),
           child: Stack(
             children: <Widget>[
-              Image.network(hero.image!, fit: BoxFit.cover, width: 1000.0),
+              CachedNetworkImage(
+                imageUrl: hero.image!,
+                fit: BoxFit.cover,
+                width: double.infinity,
+              ),
               Positioned(
                 bottom: 0.0,
                 left: 0.0,
