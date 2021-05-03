@@ -1,36 +1,33 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:super_hero_app/core/http/http.dart';
-import 'package:super_hero_app/core/http/http_dio.dart';
-import 'package:super_hero_app/feature/hero/data/datasources/hero_remote_datasource.dart';
-import 'package:super_hero_app/feature/hero/domain/datasources/hero_remote_datasource.dart';
+import 'package:super_hero_app/core/database/boxes/hero_box.dart';
+import 'package:super_hero_app/core/database/database.dart';
+import 'package:super_hero_app/feature/hero/data/datasources/hero_local_datasource.dart';
+import 'package:super_hero_app/feature/hero/domain/datasources/hero_local_datasource.dart';
 
 import '../heros_json.dart';
 
-class MockHttpDio extends Mock implements HttpDio {}
+class MockDatabase extends Mock implements Database {}
 
 void main() {
-  late HttpDio httpMock;
-  late HeroRemoteDatasource heroRemoteDataSource;
+  late MockDatabase database;
+  late HeroLocalDatasource heroRemoteDataSource;
 
   setUp(() {
-    httpMock = MockHttpDio();
-    heroRemoteDataSource = HeroRemoteDatasourceImpl(
-      http: httpMock,
+    database = MockDatabase();
+    heroRemoteDataSource = HeroLocalDatasourceImpl(
+      database: database,
     );
   });
 
   group('get hero by id', () {
     test('Should return Map when valid response has get', () async {
       when(
-        () => httpMock.get(
+        () => database.firstWhere<HeroBox>(
           any(),
         ),
       ).thenAnswer(
-        (_) async => HttpResponse(
-          statusCode: 200,
-          body: aBombFullMap,
-        ),
+        (_) async => aBombFullMap,
       );
 
       final result = await heroRemoteDataSource.getHero(1);
@@ -39,15 +36,10 @@ void main() {
 
     test('Should return Null when invalid response has get', () async {
       when(
-        () => httpMock.get(
+        () => database.firstWhere<HeroBox>(
           any(),
         ),
-      ).thenAnswer(
-        (_) async => HttpResponse(
-          statusCode: 400,
-          body: null,
-        ),
-      );
+      ).thenAnswer((_) async => null);
 
       final result = await heroRemoteDataSource.getHero(1);
       expect(result, null);
@@ -57,14 +49,11 @@ void main() {
   group('get hero by name', () {
     test('Should return Map when valid response has get', () async {
       when(
-        () => httpMock.get(
+        () => database.where<HeroBox>(
           any(),
         ),
       ).thenAnswer(
-        (_) async => HttpResponse(
-          statusCode: 200,
-          body: heroSearchResultMap,
-        ),
+        (_) async => heroSearchResultMap,
       );
 
       final result = await heroRemoteDataSource.getHeroByName('iron');
@@ -73,14 +62,11 @@ void main() {
 
     test('Should return Null when invalid response has get', () async {
       when(
-        () => httpMock.get(
+        () => database.where<HeroBox>(
           any(),
         ),
       ).thenAnswer(
-        (_) async => HttpResponse(
-          statusCode: 400,
-          body: null,
-        ),
+        (_) async => null,
       );
 
       final result = await heroRemoteDataSource.getHeroByName('iron');

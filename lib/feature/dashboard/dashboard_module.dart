@@ -1,7 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/controllers/dashboard_controller.dart';
+import 'package:super_hero_app/feature/hero/data/datasources/hero_local_datasource.dart';
 import 'package:super_hero_app/feature/hero/data/datasources/hero_remote_datasource.dart';
 import 'package:super_hero_app/feature/hero/data/repositories/hero_repository.dart';
+import 'package:super_hero_app/feature/hero/domain/usecases/get_all_heroes_usecase.dart';
 import 'package:super_hero_app/feature/hero/domain/usecases/get_hero_by_id_usecase.dart';
 import 'package:super_hero_app/feature/hero/domain/usecases/get_hero_by_name_usecase.dart';
 
@@ -11,6 +13,11 @@ class DashboardModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.factory(
+          (i) => HeroLocalDatasourceImpl(
+            database: i.get(),
+          ),
+        ),
+        Bind.factory(
           (i) => HeroRemoteDatasourceImpl(
             http: i.get(),
           ),
@@ -18,6 +25,7 @@ class DashboardModule extends Module {
         Bind.factory(
           (i) => HeroRepositoryImpl(
             remoteDatasource: i.get(),
+            localDatasource: i.get(),
           ),
         ),
         Bind.factory(
@@ -31,9 +39,15 @@ class DashboardModule extends Module {
           ),
         ),
         Bind.factory(
+          (i) => GetAllHeroesUseCase(
+            repository: i.get(),
+          ),
+        ),
+        Bind.factory(
           (i) => DashboardController(
             getHeroById: i.get<GetHeroByIdUseCase>(),
             getHeroByName: i.get<GetHeroByNameUseCase>(),
+            getAllHeroes: i.get<GetAllHeroesUseCase>(),
           ),
         ),
       ];

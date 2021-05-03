@@ -19,23 +19,23 @@ class PowerstatsModel extends PowerstatsEntity {
 
   factory PowerstatsModel.fromJson(dynamic json) {
     return PowerstatsModel(
-      intelligence: int.tryParse(json['intelligence']),
-      strength: int.tryParse(json['strength']),
-      speed: int.tryParse(json['speed']),
-      durability: int.tryParse(json['durability']),
-      power: int.tryParse(json['power']),
-      combat: int.tryParse(json['combat']),
+      intelligence: json['intelligence'],
+      strength: json['strength'],
+      speed: json['speed'],
+      durability: json['durability'],
+      power: json['power'],
+      combat: json['combat'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'intelligence': intelligence.toString(),
-      'strength': strength.toString(),
-      'speed': speed.toString(),
-      'durability': durability.toString(),
-      'power': power.toString(),
-      'combat': combat.toString(),
+      'intelligence': intelligence,
+      'strength': strength,
+      'speed': speed,
+      'durability': durability,
+      'power': power,
+      'combat': combat,
     };
   }
 }

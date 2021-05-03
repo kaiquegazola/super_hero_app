@@ -22,7 +22,7 @@ class DashboardScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.black,
                   image: DecorationImage(
-                    image: NetworkImage(controller.currentHero!.image!),
+                    image: NetworkImage(controller.currentHero!.images!.lg!),
                     fit: BoxFit.fitHeight,
                     colorFilter: ColorFilter.mode(
                       Colors.black.withOpacity(0.8),

@@ -47,6 +47,14 @@ mixin _$DashboardController on DashboardControllerBase, Store {
     });
   }
 
+  final _$initDashboardAsyncAction =
+      AsyncAction('DashboardControllerBase.initDashboard');
+
+  @override
+  Future<void> initDashboard() {
+    return _$initDashboardAsyncAction.run(() => super.initDashboard());
+  }
+
   @override
   String toString() {
     return '''

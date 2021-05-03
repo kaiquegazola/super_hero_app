@@ -22,14 +22,17 @@ void main() {
     );
   });
 
-  test('Should return Right<List<HeroEntity> when successfull get a hero by name', () async {
+  test(
+      'Should return Right<List<HeroEntity> when successfull get a hero by name',
+      () async {
     when(
       () => heroRepository.getHeroByName(any()),
     ).thenAnswer(
       (_) async => Right(listHeroSearchResultModel),
     );
 
-    final Either<Failure, List<HeroEntity>> result = await getHeroByName('iron');
+    final Either<Failure, List<HeroEntity>> result =
+        await getHeroByName('iron');
 
     expect(result, Right<Failure, List<HeroEntity>>(listHeroSearchResultModel));
     verify(() => heroRepository.getHeroByName('iron'));
@@ -48,7 +51,8 @@ void main() {
       ),
     );
 
-    final Either<Failure, List<HeroEntity>> result = await getHeroByName('iron');
+    final Either<Failure, List<HeroEntity>> result =
+        await getHeroByName('iron');
 
     expect(result, isA<Left<Failure, List<HeroEntity>>>());
     verify(() => heroRepository.getHeroByName('iron'));

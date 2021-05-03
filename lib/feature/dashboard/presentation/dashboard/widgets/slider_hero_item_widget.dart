@@ -20,7 +20,7 @@ class SliderHeroItemWidget extends StatelessWidget {
           child: Stack(
             children: <Widget>[
               CachedNetworkImage(
-                imageUrl: hero.image!,
+                imageUrl: hero.images!.lg!,
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),

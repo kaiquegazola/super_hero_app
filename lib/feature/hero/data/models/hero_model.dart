@@ -7,8 +7,11 @@ import 'package:super_hero_app/feature/hero/domain/entities/appearance_entity.da
 import 'package:super_hero_app/feature/hero/domain/entities/biography_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/connection_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
+import 'package:super_hero_app/feature/hero/domain/entities/images_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/powerstats_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/work_entity.dart';
+
+import 'images_model.dart';
 
 class HeroModel extends HeroEntity {
   const HeroModel({
@@ -20,7 +23,7 @@ class HeroModel extends HeroEntity {
     BiographyEntity? biography,
     WorkEntity? work,
     ConnectionEntity? connections,
-    String? image,
+    ImagesEntity? images,
   }) : super(
           id: id,
           name: name,
@@ -30,16 +33,13 @@ class HeroModel extends HeroEntity {
           biography: biography,
           work: work,
           connections: connections,
-          image: image,
+          images: images,
         );
 
   factory HeroModel.fromJson(dynamic json) => HeroModel(
-        id: int.parse(json['id']),
+        id: json['id'],
         name: json['name'],
         slug: json['slug'],
-        image: json['image'] != null && json['image']['url'] != null
-            ? json['image']['url']
-            : null,
         powerstats: json['powerstats'] != null
             ? PowerstatsModel.fromJson(json['powerstats'])
             : null,
@@ -53,6 +53,9 @@ class HeroModel extends HeroEntity {
         connections: json['connections'] != null
             ? ConnectionModel.fromJson(json['connections'])
             : null,
+        images: json['images'] != null
+            ? ImagesModel.fromJson(json['images'])
+            : null,
       );
 
   static List<HeroModel> fromListMap(List<Map<String, dynamic>> items) {
@@ -63,7 +66,7 @@ class HeroModel extends HeroEntity {
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
-      'id': id.toString(),
+      'id': id,
       'name': name,
       'slug': slug,
       'powerstats':
@@ -76,11 +79,7 @@ class HeroModel extends HeroEntity {
       'connections': connections != null
           ? (connections as ConnectionModel).toJson()
           : null,
-      'image': image != null
-          ? <String, dynamic>{
-              'url': image,
-            }
-          : null,
+      'images': images != null ? (images as ImagesModel).toJson() : null,
     };
   }
 }

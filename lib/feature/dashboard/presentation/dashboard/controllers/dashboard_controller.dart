@@ -11,12 +11,14 @@ abstract class DashboardControllerBase with Store {
   DashboardControllerBase({
     required this.getHeroById,
     required this.getHeroByName,
+    required this.getAllHeroes,
   }) {
     initDashboard();
   }
 
   final UseCase<HeroEntity, int> getHeroById;
   final UseCase<List<HeroEntity>, String> getHeroByName;
+  final UseCase<bool, Null> getAllHeroes;
 
   @computed
   HeroEntity? get currentHero => heroes?[currentIndex];
@@ -40,12 +42,17 @@ abstract class DashboardControllerBase with Store {
     if (_heroes.isNotEmpty) {
       preCacheImages(_heroes);
       heroes = ObservableList.of(_heroes);
+    } else {
+      final result = await getAllHeroes(null);
+      result.fold((l) => null, (r) {
+        initDashboard();
+      });
     }
   }
 
   Future<void> preCacheImages(List<HeroEntity> heroes) async {
     for (var hero in heroes) {
-      await DefaultCacheManager().getSingleFile(hero.image!);
+      await DefaultCacheManager().getSingleFile(hero.images!.lg!);
     }
   }
 }
