@@ -16,15 +16,19 @@ class HiveDatabase extends Database {
   @override
   Future initialize() async {
     final document = await getApplicationDocumentsDirectory();
-    Hive
-      ..init(document.path)
-      ..registerAdapter(AppearanceBoxAdapter())
-      ..registerAdapter(BiographyBoxAdapter())
-      ..registerAdapter(ConnectionBoxAdapter())
-      ..registerAdapter(HeroBoxAdapter())
-      ..registerAdapter(ImagesBoxAdapter())
-      ..registerAdapter(PowerstatsBoxAdapter())
-      ..registerAdapter(WorkBoxAdapter());
+    try {
+      Hive
+        ..init(document.path)
+        ..registerAdapter(AppearanceBoxAdapter())
+        ..registerAdapter(BiographyBoxAdapter())
+        ..registerAdapter(ConnectionBoxAdapter())
+        ..registerAdapter(HeroBoxAdapter())
+        ..registerAdapter(ImagesBoxAdapter())
+        ..registerAdapter(PowerstatsBoxAdapter())
+        ..registerAdapter(WorkBoxAdapter());
+    } on HiveError catch (e) {
+      if (e.message.contains('already a TypeAdapter')) {}
+    }
   }
 
   @override
