@@ -21,9 +21,13 @@ class ImagesBox extends HiveObject {
     );
   }
 
+  @HiveField(0)
   String? xs;
+  @HiveField(1)
   String? sm;
+  @HiveField(2)
   String? md;
+  @HiveField(3)
   String? lg;
 
   Map<String, dynamic> toMap() {
