@@ -47,6 +47,21 @@ mixin _$DashboardController on DashboardControllerBase, Store {
     });
   }
 
+  final _$currentPageAtom = Atom(name: 'DashboardControllerBase.currentPage');
+
+  @override
+  int get currentPage {
+    _$currentPageAtom.reportRead();
+    return super.currentPage;
+  }
+
+  @override
+  set currentPage(int value) {
+    _$currentPageAtom.reportWrite(value, super.currentPage, () {
+      super.currentPage = value;
+    });
+  }
+
   final _$initDashboardAsyncAction =
       AsyncAction('DashboardControllerBase.initDashboard');
 
@@ -55,11 +70,19 @@ mixin _$DashboardController on DashboardControllerBase, Store {
     return _$initDashboardAsyncAction.run(() => super.initDashboard());
   }
 
+  final _$shuffleAsyncAction = AsyncAction('DashboardControllerBase.shuffle');
+
+  @override
+  Future<void> shuffle() {
+    return _$shuffleAsyncAction.run(() => super.shuffle());
+  }
+
   @override
   String toString() {
     return '''
 heroes: ${heroes},
 currentIndex: ${currentIndex},
+currentPage: ${currentPage},
 currentHero: ${currentHero}
     ''';
   }

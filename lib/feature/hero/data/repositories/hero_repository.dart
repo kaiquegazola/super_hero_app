@@ -42,14 +42,18 @@ class HeroRepositoryImpl implements HeroRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> getAllHeroes() async {
+  Future<Either<Failure, List<HeroEntity>>> getAllHeroes() async {
     try {
-      final heroesMap = await remoteDatasource.getAllHeroes();
-      final heroes = HeroModel.fromListMap(heroesMap!);
+      final offlineHeroesMap = await localDatasource.getAllHeroes();
+      if (offlineHeroesMap != null && offlineHeroesMap.isNotEmpty) {
+        return Right(HeroModel.fromListMap(offlineHeroesMap));
+      }
+      final onlineHeroesMap = await remoteDatasource.getAllHeroes();
+      final heroes = HeroModel.fromListMap(onlineHeroesMap!);
       for (HeroModel hero in heroes) {
         await localDatasource.addHero(hero);
       }
-      return Right(true);
+      return Right(heroes);
     } catch (_) {
       return Left(
         Failure(message: 'Error getting/saving all heroes'),

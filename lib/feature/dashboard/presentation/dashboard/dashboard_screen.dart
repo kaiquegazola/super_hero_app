@@ -6,6 +6,8 @@ import 'package:super_hero_app/feature/dashboard/presentation/dashboard/controll
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/widgets/loading_widget.dart';
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/widgets/slider_hero_item_widget.dart';
 
+import 'widgets/shuffle_hero_widget.dart';
+
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({
     required this.controller,
@@ -31,44 +33,18 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 child: SafeArea(
-                  minimum: EdgeInsets.only(bottom: 50.h),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          OutlinedButton.icon(
-                            onPressed: () {},
-                            icon: Text('Filters'),
-                            label: Icon(
-                              Icons.filter_list,
-                            ),
-                          )
+                          _filterButton(),
                         ],
                       ),
-                      CarouselSlider(
-                        options: CarouselOptions(
-                          aspectRatio: 2.0,
-                          enlargeCenterPage: true,
-                          enlargeStrategy: CenterPageEnlargeStrategy.height,
-                          height: 340.h,
-                          onPageChanged: (index, reason) {
-                            controller.currentIndex = index;
-                          },
-                        ),
-                        items: _sliderItens(),
-                      ),
-                      OutlinedButton(
-                        onPressed: () {},
-                        child: Text('SHUFFLE'),
-                        style: OutlinedButton.styleFrom(
-                          primary: Colors.white,
-                          side: BorderSide(
-                            width: 2.w,
-                            color: Colors.white,
-                          ),
-                        ),
+                      _caroussel(),
+                      ShuffleHeroWidget(
+                        onTap: () async => await controller.shuffle(),
                       ),
                     ],
                   ),
@@ -78,6 +54,29 @@ class DashboardScreen extends StatelessWidget {
       ),
     );
   }
+
+  Widget _filterButton() => OutlinedButton.icon(
+        onPressed: () {},
+        icon: Text('Filters'),
+        label: Icon(
+          Icons.filter_list,
+        ),
+      );
+
+  Widget _caroussel() => CarouselSlider(
+        options: CarouselOptions(
+          aspectRatio: 2.0,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+          enlargeStrategy: CenterPageEnlargeStrategy.height,
+          height: 340.h,
+          onPageChanged: (index, reason) {
+            controller.currentIndex = index;
+          },
+        ),
+        carouselController: controller.carouselController,
+        items: _sliderItens(),
+      );
 
   List<Widget> _sliderItens() {
     return controller.heroes!

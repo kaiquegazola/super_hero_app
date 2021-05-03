@@ -29,4 +29,10 @@ class HeroLocalDatasourceImpl extends HeroLocalDatasource {
     final int result = await database.insert<HeroBox>(hero.toJson());
     return result > 0;
   }
+
+  @override
+  Future<List<Map<String, dynamic>>?> getAllHeroes() async {
+    final result = await database.where<HeroBox>((dynamic element) => true);
+    return result;
+  }
 }

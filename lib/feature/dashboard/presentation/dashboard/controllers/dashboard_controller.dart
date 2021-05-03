@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:mobx/mobx.dart';
 import 'package:super_hero_app/core/usecases/usecase.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
@@ -18,7 +21,8 @@ abstract class DashboardControllerBase with Store {
 
   final UseCase<HeroEntity, int> getHeroById;
   final UseCase<List<HeroEntity>, String> getHeroByName;
-  final UseCase<bool, Null> getAllHeroes;
+  final UseCase<List<HeroEntity>, Null> getAllHeroes;
+  final CarouselController carouselController = CarouselController();
 
   @computed
   HeroEntity? get currentHero => heroes?[currentIndex];
@@ -29,24 +33,29 @@ abstract class DashboardControllerBase with Store {
   @observable
   int currentIndex = 0;
 
+  @observable
+  int currentPage = 1;
+
   @action
   Future<void> initDashboard() async {
-    final List<HeroEntity> _heroes = [];
-    for (int i = 1; i < 6; i++) {
-      final heroResult = await getHeroById(i);
-      heroResult.fold(
-        (l) => null,
-        (hero) => _heroes.add(hero),
-      );
-    }
-    if (_heroes.isNotEmpty) {
-      preCacheImages(_heroes);
-      heroes = ObservableList.of(_heroes);
-    } else {
+    if(heroes == null){
       final result = await getAllHeroes(null);
-      result.fold((l) => null, (r) {
-        initDashboard();
+      await result.fold((l) => null, (heroList) async {
+        await preCacheImages(heroList.sublist(0, 5));
+        heroes = ObservableList.of(heroList);
       });
+    }
+  }
+
+
+  @action
+  Future<void> shuffle() async {
+    final randomId = Random().nextInt(731) + 1;
+    final index = heroes!.indexWhere((hero) => hero.id == randomId);
+    if (index >= 0) {
+      carouselController.animateToPage(index);
+    } else {
+      shuffle();
     }
   }
 
