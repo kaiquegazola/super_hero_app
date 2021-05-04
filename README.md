@@ -1,16 +1,8 @@
 # super_hero_app
 
-SuperHeroApp It is an app which consumes from akabab/superhero-api project
+SuperHeroApp It is an app which consumes from akabab/superhero-api(https://github.com/akabab/superhero-api/tree/master/api) project made with [Dart](https://dart.dev) & [Flutter](https://flutter.dev)
 
-## Getting Started
+## 
 
-This project is a starting point for a Flutter application.
+https://user-images.githubusercontent.com/16167977/117007733-5d109c00-acc0-11eb-861e-9616e76f8fb3.mp4
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
