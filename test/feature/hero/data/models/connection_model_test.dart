@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:super_hero_app/feature/hero/data/models/connection_model.dart';
 
-import 'abomb_hero_json.dart';
+import '../heros_json.dart';
 
 void main() {
   test('Should return a ConnectionModel when a valid json is provide', () {
