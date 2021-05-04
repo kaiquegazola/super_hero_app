@@ -1,6 +1,6 @@
 # super_hero_app
 
-SuperHeroApp It is an app which consumes from akabab/superhero-api(https://github.com/akabab/superhero-api/tree/master/api) project made with [Dart](https://dart.dev) & [Flutter](https://flutter.dev)
+SuperHeroApp It is an app which consumes from [akabab/superhero-api(https://github.com/akabab/superhero-api/tree/master/api) project made with [Dart](https://dart.dev) & [Flutter](https://flutter.dev)
 
 ## 
 
