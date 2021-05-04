@@ -25,6 +25,7 @@ dependencies:
   hive_flutter: ^1.0.0
   mobx: ^2.0.1
   mocktail: ^0.1.2
+  modal_bottom_sheet: ^2.0.0
   path_provider: ^2.0.1
 
 dev_dependencies:

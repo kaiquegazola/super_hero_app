@@ -62,6 +62,21 @@ mixin _$DashboardController on DashboardControllerBase, Store {
     });
   }
 
+  final _$filterAtom = Atom(name: 'DashboardControllerBase.filter');
+
+  @override
+  DashboardHeroFilterEntity get filter {
+    _$filterAtom.reportRead();
+    return super.filter;
+  }
+
+  @override
+  set filter(DashboardHeroFilterEntity value) {
+    _$filterAtom.reportWrite(value, super.filter, () {
+      super.filter = value;
+    });
+  }
+
   final _$initDashboardAsyncAction =
       AsyncAction('DashboardControllerBase.initDashboard');
 
@@ -77,12 +92,21 @@ mixin _$DashboardController on DashboardControllerBase, Store {
     return _$shuffleAsyncAction.run(() => super.shuffle());
   }
 
+  final _$applyFiltersAsyncAction =
+      AsyncAction('DashboardControllerBase.applyFilters');
+
+  @override
+  Future<void> applyFilters(BuildContext context) {
+    return _$applyFiltersAsyncAction.run(() => super.applyFilters(context));
+  }
+
   @override
   String toString() {
     return '''
 heroes: ${heroes},
 currentIndex: ${currentIndex},
 currentPage: ${currentPage},
+filter: ${filter},
 currentHero: ${currentHero}
     ''';
   }

@@ -61,6 +61,7 @@ class _LoadingWidgetState extends State<LoadingWidget>
           ),
         ],
       ),
+      resizeToAvoidBottomInset: false,
     );
   }
 

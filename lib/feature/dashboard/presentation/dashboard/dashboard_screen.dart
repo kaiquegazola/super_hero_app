@@ -1,10 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/controllers/dashboard_controller.dart';
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/widgets/loading_widget.dart';
 import 'package:super_hero_app/feature/dashboard/presentation/dashboard/widgets/slider_hero_item_widget.dart';
+import 'package:super_hero_app/feature/dashboard/presentation/filters/filters_screen.dart';
 
 import 'widgets/shuffle_hero_widget.dart';
 
@@ -39,7 +42,7 @@ class DashboardScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          _filterButton(),
+                          _filterButton(context),
                         ],
                       ),
                       _caroussel(),
@@ -55,8 +58,16 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _filterButton() => OutlinedButton.icon(
-        onPressed: () {},
+  Widget _filterButton(BuildContext context) => OutlinedButton.icon(
+        onPressed: () {
+          showCupertinoModalBottomSheet<void>(
+            context: context,
+            builder: (ctx) => FiltersScreen(
+              controller: controller,
+            ),
+            expand: false,
+          );
+        },
         icon: Text('Filters'),
         label: Icon(
           Icons.filter_list,
