@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:super_hero_app/core/usecases/usecase.dart';
 import 'package:super_hero_app/feature/dashboard/domain/entities/dashboard_hero_filter_entity.dart';
@@ -112,5 +113,9 @@ abstract class DashboardControllerBase with Store {
     for (var hero in heroes) {
       await DefaultCacheManager().getSingleFile(hero.images!.lg!);
     }
+  }
+
+  void goToDetails(HeroEntity hero) {
+    Modular.to.pushNamed('/hero', arguments: hero);
   }
 }

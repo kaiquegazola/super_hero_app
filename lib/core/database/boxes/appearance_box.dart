@@ -18,8 +18,8 @@ class AppearanceBox extends HiveObject {
     return AppearanceBox(
       gender: map['gender'],
       race: map['race'],
-      height: map['height'] != null ? map['height'].cast<String>() : [],
-      weight: map['weight'] != null ? map['weight'].cast<String>() : [],
+      height: map['height'],
+      weight: map['weight'],
       eyeColor: map['eyeColor'],
       hairColor: map['hairColor'],
     );

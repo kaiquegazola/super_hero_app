@@ -92,8 +92,11 @@ class DashboardScreen extends StatelessWidget {
   List<Widget> _sliderItens() {
     return controller.heroes!
         .map(
-          (hero) => SliderHeroItemWidget(
-            hero: hero,
+          (hero) => InkWell(
+            onTap: () => controller.goToDetails(hero),
+            child: SliderHeroItemWidget(
+              hero: hero,
+            ),
           ),
         )
         .toList();
