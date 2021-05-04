@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:collection/collection.dart';
 
 import 'package:hive/hive.dart';
@@ -13,22 +15,25 @@ import 'boxes/work_box.dart';
 import 'database.dart';
 
 class HiveDatabase extends Database {
+  HiveDatabase() {
+    initialize();
+  }
+
+  final _completer = Completer<void>();
+
   @override
   Future initialize() async {
     final document = await getApplicationDocumentsDirectory();
-    try {
-      Hive
-        ..init(document.path)
-        ..registerAdapter(AppearanceBoxAdapter())
-        ..registerAdapter(BiographyBoxAdapter())
-        ..registerAdapter(ConnectionBoxAdapter())
-        ..registerAdapter(HeroBoxAdapter())
-        ..registerAdapter(ImagesBoxAdapter())
-        ..registerAdapter(PowerstatsBoxAdapter())
-        ..registerAdapter(WorkBoxAdapter());
-    } on HiveError catch (e) {
-      if (e.message.contains('already a TypeAdapter')) {}
-    }
+    Hive
+      ..init(document.path)
+      ..registerAdapter(AppearanceBoxAdapter())
+      ..registerAdapter(BiographyBoxAdapter())
+      ..registerAdapter(ConnectionBoxAdapter())
+      ..registerAdapter(HeroBoxAdapter())
+      ..registerAdapter(ImagesBoxAdapter())
+      ..registerAdapter(PowerstatsBoxAdapter())
+      ..registerAdapter(WorkBoxAdapter());
+    _completer.complete();
   }
 
   @override
@@ -83,6 +88,9 @@ class HiveDatabase extends Database {
   }
 
   Future<Box> _init<T>() async {
+    if (!_completer.isCompleted) {
+      await _completer.future;
+    }
     final tableName = _getTableName<T>();
     if (!Hive.isBoxOpen(tableName)) {
       final box = await Hive.openBox<T>(
