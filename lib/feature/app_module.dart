@@ -8,8 +8,8 @@ import 'app_routing.dart';
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.singleton(
-          (i) => HiveDatabase()..initialize(),
+        Bind.lazySingleton(
+          (i) => HiveDatabase(),
         ),
         Bind.lazySingleton(
           (i) => DioCreator.create(),
