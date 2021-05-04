@@ -7,6 +7,7 @@ import 'package:super_hero_app/feature/hero/domain/entities/appearance_entity.da
 import 'package:super_hero_app/feature/hero/domain/entities/biography_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/connection_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
+import 'package:super_hero_app/feature/hero/domain/entities/images_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/powerstats_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/work_entity.dart';
 
@@ -22,7 +23,7 @@ class HeroModel extends HeroEntity {
     BiographyEntity? biography,
     WorkEntity? work,
     ConnectionEntity? connections,
-    ImagesModel? images,
+    ImagesEntity? images,
   }) : super(
           id: id,
           name: name,
@@ -56,6 +57,12 @@ class HeroModel extends HeroEntity {
             ? ImagesModel.fromJson(json['images'])
             : null,
       );
+
+  static List<HeroModel> fromListMap(List<Map<String, dynamic>> items) {
+    return items
+        .map<HeroModel>((Map<String, dynamic> e) => HeroModel.fromJson(e))
+        .toList();
+  }
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
