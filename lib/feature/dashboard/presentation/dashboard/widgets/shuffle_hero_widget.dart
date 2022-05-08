@@ -14,7 +14,7 @@ class ShuffleHeroWidget extends StatelessWidget {
         onPressed: onTap,
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: const [
             Icon(Icons.shuffle),
             Text('RANDOM HERO'),
           ],

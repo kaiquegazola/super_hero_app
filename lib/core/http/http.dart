@@ -20,6 +20,6 @@ class HttpResponse {
   });
 
   final Map<String, dynamic>? headers;
-  final dynamic? body;
+  final dynamic body;
   final int? statusCode;
 }

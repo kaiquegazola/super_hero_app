@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(360, 710),
-      builder: () {
-        return MaterialApp(
+      builder: (child) {
+        Modular.setInitialRoute('/dashboard');
+        return MaterialApp.router(
+          routeInformationParser: Modular.routeInformationParser,
+          routerDelegate: Modular.routerDelegate,
           theme: ThemeData(
-            accentColor: Colors.black87,
             textTheme: TextTheme(
               bodyText1: TextStyle(
                 color: Colors.white,
@@ -24,10 +26,12 @@ class AppWidget extends StatelessWidget {
               ),
             ),
             scaffoldBackgroundColor: Colors.white,
+            colorScheme: ColorScheme.fromSwatch().copyWith(
+              secondary: Colors.black87,
+            ),
           ),
           debugShowCheckedModeBanner: false,
-          initialRoute: '/dashboard',
-        ).modular();
+        );
       },
     );
   }

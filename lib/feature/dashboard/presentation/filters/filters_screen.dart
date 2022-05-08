@@ -37,7 +37,7 @@ class FiltersScreen extends StatelessWidget {
                         Modular.to.pop();
                       },
                       child: Row(
-                        children: [
+                        children: const [
                           Icon(Icons.clear),
                           Text('Clear'),
                         ],
@@ -55,7 +55,7 @@ class FiltersScreen extends StatelessWidget {
                       Modular.to.pop();
                     },
                     child: Row(
-                      children: [
+                      children: const [
                         Text('Apply'),
                         Icon(Icons.check),
                       ],
@@ -112,8 +112,9 @@ class FiltersScreen extends StatelessWidget {
                         groupValue: controller.filter.gender,
                         value: '',
                         onChanged: (String? value) {
-                          controller.filter =
-                              controller.filter.copyWith(gender: value);
+                          controller.filter = controller.filter.copyWith(
+                            gender: value,
+                          );
                         },
                       ),
                       LabeledRadioWidget<String>(
@@ -121,8 +122,9 @@ class FiltersScreen extends StatelessWidget {
                         groupValue: controller.filter.gender,
                         value: 'female',
                         onChanged: (String? value) {
-                          controller.filter =
-                              controller.filter.copyWith(gender: value);
+                          controller.filter = controller.filter.copyWith(
+                            gender: value,
+                          );
                         },
                       ),
                       LabeledRadioWidget<String>(
@@ -130,8 +132,9 @@ class FiltersScreen extends StatelessWidget {
                         groupValue: controller.filter.gender,
                         value: 'male',
                         onChanged: (String? value) {
-                          controller.filter =
-                              controller.filter.copyWith(gender: value);
+                          controller.filter = controller.filter.copyWith(
+                            gender: value,
+                          );
                         },
                       ),
                       LabeledRadioWidget<String>(
@@ -139,8 +142,9 @@ class FiltersScreen extends StatelessWidget {
                         groupValue: controller.filter.gender,
                         value: '-',
                         onChanged: (String? value) {
-                          controller.filter =
-                              controller.filter.copyWith(gender: value);
+                          controller.filter = controller.filter.copyWith(
+                            gender: value,
+                          );
                         },
                       ),
                     ],

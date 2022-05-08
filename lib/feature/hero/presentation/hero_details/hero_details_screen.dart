@@ -74,7 +74,7 @@ class HeroDetailsScreen extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.sp,
-                        shadows: [
+                        shadows: const [
                           BoxShadow(
                             color: Colors.black,
                             blurRadius: 4,

@@ -5,11 +5,11 @@ import 'hero/hero_module.dart';
 
 class AppRouting {
   static final List<ModularRoute> routes = [
-    ModuleRoute(
+    ModuleRoute<void>(
       '/dashboard',
       module: DashboardModule(),
     ),
-    ModuleRoute(
+    ModuleRoute<void>(
       '/hero',
       module: HeroModule(),
     ),

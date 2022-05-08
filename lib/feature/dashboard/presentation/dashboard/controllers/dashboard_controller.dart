@@ -2,12 +2,12 @@ import 'dart:math';
 
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:super_hero_app/core/usecases/usecase.dart';
 import 'package:super_hero_app/feature/dashboard/domain/entities/dashboard_hero_filter_entity.dart';
 import 'package:super_hero_app/feature/hero/domain/entities/hero_entity.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 part 'dashboard_controller.g.dart';
 
